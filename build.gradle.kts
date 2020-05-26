@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.juuxel"
-version = "1.0.0"
+version = "1.0.0-nimbus"
 
 repositories {
     mavenCentral()
@@ -21,14 +21,13 @@ dependencies {
 
     // Swing stuff
     implementation(group = "com.miglayout", name = "miglayout-swing", version = "4.2")
-    implementation(group = "org.pushing-pixels", name = "radiance-substance", version = "2.5.1")
 
     compileOnly(group = "org.jetbrains", name = "annotations", version = "19.0.0")
 }
 
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 license {

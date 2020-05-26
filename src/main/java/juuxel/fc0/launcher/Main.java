@@ -10,16 +10,17 @@ import juuxel.fc0.launcher.config.Config;
 import juuxel.fc0.launcher.gui.Icons;
 import juuxel.fc0.launcher.gui.LauncherGui;
 import juuxel.fc0.launcher.util.Logger;
-import org.pushingpixels.substance.api.skin.SubstanceNightShadeLookAndFeel;
 
 import javax.swing.*;
-import java.util.List;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+import static org.organicdesign.fp.StaticImports.vec;
 
 public final class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel(new SubstanceNightShadeLookAndFeel());
+                UIManager.setLookAndFeel(new NimbusLookAndFeel());
             } catch (Exception e) {
                 Logger.error("Could not set look and feel", e);
             }
@@ -28,7 +29,7 @@ public final class Main {
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setSize(640, 480);
             frame.setContentPane(new LauncherGui(frame, Config.load()));
-            frame.setIconImages(List.of(Icons.ICON_16, Icons.ICON_24, Icons.ICON_64));
+            frame.setIconImages(vec(Icons.ICON_16, Icons.ICON_24, Icons.ICON_64));
             frame.setVisible(true);
         });
     }

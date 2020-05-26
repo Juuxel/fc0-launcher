@@ -14,11 +14,12 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class DependencyDownloader {
-    private static final Path CACHE = Path.of(System.getProperty("user.home"), ".cache", "fc0-launcher");
+    private static final Path CACHE = Paths.get(System.getProperty("user.home"), ".cache", "fc0-launcher");
     private static final String REPO = "https://repo.maven.apache.org/maven2/";
 
     private DependencyDownloader() {

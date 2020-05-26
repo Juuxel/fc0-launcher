@@ -18,6 +18,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public final class LauncherGui extends JPanel {
         addModButton.addActionListener(event -> {
             int result = modChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
-                for (var file : modChooser.getSelectedFiles()) {
+                for (File file : modChooser.getSelectedFiles()) {
                     Mod mod = new Mod(file.toPath());
                     config.mods.add(mod);
                 }

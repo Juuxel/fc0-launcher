@@ -21,11 +21,12 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Config {
-    private static final Path CONFIG_PATH = Path.of(System.getProperty("user.home"), ".config", "fc0-launcher.json");
+    private static final Path CONFIG_PATH = Paths.get(System.getProperty("user.home"), ".config", "fc0-launcher.json");
     public final List<Mod> mods = new ArrayList<>();
     public Version selectedVersion = Version.LATEST;
 
@@ -50,7 +51,7 @@ public final class Config {
             .registerTypeFactory(Mod.class, Mod::new)
             .registerSerializer(Path.class, (path, m) -> new JsonPrimitive(path.toString()))
             .registerSerializer(Version.class, (version, m) -> new JsonPrimitive(version.getName()))
-            .registerDeserializer(JsonPrimitive.class, Path.class, (primitive, m) -> Path.of(primitive.asString()))
+            .registerDeserializer(JsonPrimitive.class, Path.class, (primitive, m) -> Paths.get(primitive.asString()))
             .registerDeserializer(JsonPrimitive.class, Version.class, (primitive, m) -> {
                 Version version = Version.BY_NAME.get(primitive.asString());
 
