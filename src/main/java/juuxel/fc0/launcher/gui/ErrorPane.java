@@ -13,6 +13,10 @@ import java.awt.Component;
 
 public final class ErrorPane {
     public static void show(@Nullable Component parent, String title, @Nullable String message, Throwable error) {
-        JOptionPane.showMessageDialog(parent, message != null ? message : error.getMessage(), title, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(
+            parent,
+            message != null ? message : String.format("%s: %s", error.getClass().getName(), error.getMessage()),
+            title, JOptionPane.ERROR_MESSAGE
+        );
     }
 }
