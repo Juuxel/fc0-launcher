@@ -46,4 +46,8 @@ tasks {
     shadowJar {
         from("LICENSE")
     }
+
+    build {
+        dependsOn(shadowJar)
+    }
 }
