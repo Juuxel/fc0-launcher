@@ -44,9 +44,10 @@ public final class Version {
     public static final Version VERSION_0_1_3_BUILD_2 = TEMPLATE.copy().name("0.1.3+build.2").build();
     public static final Version VERSION_0_1_4 = TEMPLATE.copy().name("0.1.4").build();
     public static final Version VERSION_0_1_5 = TEMPLATE.copy().name("0.1.5").build();
-    public static final Version LATEST = VERSION_0_1_5;
+    public static final Version VERSION_0_2_0 = TEMPLATE.copy().name("0.2.0").build();
+    public static final Version LATEST = VERSION_0_2_0;
 
-    public static final ImList<Version> VERSIONS = vec(VERSION_0_1_3_BUILD_2, VERSION_0_1_4, VERSION_0_1_5);
+    public static final ImList<Version> VERSIONS = vec(VERSION_0_2_0, VERSION_0_1_5, VERSION_0_1_4, VERSION_0_1_3_BUILD_2);
     public static final ImMap<String, Version> BY_NAME = VERSIONS.toImMap(version -> Tuple2.of(version.getName(), version));
 
     private final String name;
