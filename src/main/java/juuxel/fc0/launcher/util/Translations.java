@@ -16,4 +16,8 @@ public final class Translations {
             return key;
         }
     }
+
+    public static String get(String key, Object... parameters) {
+        return String.format(get(key), parameters);
+    }
 }

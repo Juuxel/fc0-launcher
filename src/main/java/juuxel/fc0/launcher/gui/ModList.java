@@ -49,6 +49,7 @@ final class ModList extends JPanel {
                 mod.enabled = enabledCheckBox.isSelected();
                 config.save();
             });
+            enabledCheckBox.setToolTipText(Translations.get("button.enabled.description", mod.path.getFileName()));
 
             JButton removeButton = new JButton(Icons.REMOVE);
             removeButton.addActionListener(event -> {
@@ -56,6 +57,8 @@ final class ModList extends JPanel {
                 config.save();
                 refreshOrder();
             });
+            removeButton.getAccessibleContext().setAccessibleName(Translations.get("button.remove"));
+            removeButton.setToolTipText(Translations.get("button.remove.description", mod.path.getFileName()));
 
             add(new JLabel(mod.path.getFileName().toString()));
             add(Box.createHorizontalGlue());
@@ -71,6 +74,8 @@ final class ModList extends JPanel {
                     config.save();
                     refreshOrder();
                 });
+                moveUpButton.getAccessibleContext().setAccessibleName(Translations.get("button.move-up"));
+                moveUpButton.setToolTipText(Translations.get("button.move-up.description", mod.path.getFileName()));
 
                 add(moveUpButton);
             }
@@ -84,6 +89,8 @@ final class ModList extends JPanel {
                     config.save();
                     refreshOrder();
                 });
+                moveDownButton.getAccessibleContext().setAccessibleName(Translations.get("button.move-down"));
+                moveDownButton.setToolTipText(Translations.get("button.move-down.description", mod.path.getFileName()));
 
                 add(moveDownButton);
             }

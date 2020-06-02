@@ -38,18 +38,21 @@ public final class LauncherGui extends JPanel {
         modChooser.setMultiSelectionEnabled(true);
 
         JPanel topPanel = new JPanel(new MigLayout("insets 0 20 0 20, fill"));
+        JLabel versionLabel = new JLabel(Translations.get("launcher.game-version"));
         versionComboBox = new JComboBox<>(Version.VERSIONS.toArray(new Version[0]));
         versionComboBox.setSelectedItem(config.selectedVersion);
         versionComboBox.addActionListener(event -> {
             config.selectedVersion = versionComboBox.getItemAt(versionComboBox.getSelectedIndex());
             config.save();
         });
+        versionLabel.setLabelFor(versionComboBox);
         JLabel title = new JLabel("<html><h1>"+ Translations.get("launcher.title") + "</h1>");
         title.setHorizontalAlignment(SwingConstants.CENTER);
 
         ModList modList = new ModList(config);
 
         JButton addModButton = new JButton(Icons.ADD);
+        addModButton.setToolTipText(Translations.get("button.add-mod"));
         addModButton.addActionListener(event -> {
             int result = modChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
@@ -63,14 +66,17 @@ public final class LauncherGui extends JPanel {
             }
         });
 
+        JLabel modsTitle = new JLabel("<html><h2>" + Translations.get("mods.title") + "</h2>");
+        modsTitle.setLabelFor(modList);
+
         topPanel.add(title, "span, width 100%");
-        topPanel.add(new JLabel(Translations.get("launcher.game-version")));
+        topPanel.add(versionLabel);
         topPanel.add(versionComboBox, "wrap");
-        topPanel.add(new JLabel("<html><h2>" + Translations.get("mods.title") + "</h2>"));
+        topPanel.add(modsTitle);
         topPanel.add(addModButton, "gapleft min:push, wrap");
 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton launchButton = new JButton(Translations.get("launcher.launch"));
+        JButton launchButton = new JButton(Translations.get("button.launch"));
         launchButton.setFont(launchButton.getFont().deriveFont(14f));
         launchButton.addActionListener(event -> launch());
 
