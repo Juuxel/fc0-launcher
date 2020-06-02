@@ -8,6 +8,7 @@ package juuxel.fc0.launcher.gui;
 
 import juuxel.fc0.launcher.config.Config;
 import juuxel.fc0.launcher.config.Mod;
+import juuxel.fc0.launcher.util.Translations;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -26,7 +27,7 @@ final class ModList extends JPanel {
         removeAll();
 
         if (config.mods.isEmpty()) {
-            add(new JLabel("No mods installed."));
+            add(new JLabel(Translations.get("mods.no-mods")));
         } else {
             for (int i = 0; i < config.mods.size(); i++) {
                 add(new ModEntry(i, config.mods.get(i)));

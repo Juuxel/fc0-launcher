@@ -10,6 +10,7 @@ import juuxel.fc0.launcher.config.Config;
 import juuxel.fc0.launcher.config.Mod;
 import juuxel.fc0.launcher.launch.Launcher;
 import juuxel.fc0.launcher.util.Logger;
+import juuxel.fc0.launcher.util.Translations;
 import juuxel.fc0.launcher.version.DependencyDownloader;
 import juuxel.fc0.launcher.version.Version;
 import net.miginfocom.swing.MigLayout;
@@ -33,7 +34,7 @@ public final class LauncherGui extends JPanel {
         this.frame = frame;
         this.config = config;
 
-        modChooser.setFileFilter(new FileNameExtensionFilter("Mod files", "jar"));
+        modChooser.setFileFilter(new FileNameExtensionFilter(Translations.get("file-chooser.mod-files"), "jar"));
         modChooser.setMultiSelectionEnabled(true);
 
         JPanel topPanel = new JPanel(new MigLayout("insets 0 20 0 20, fill"));
@@ -43,7 +44,7 @@ public final class LauncherGui extends JPanel {
             config.selectedVersion = versionComboBox.getItemAt(versionComboBox.getSelectedIndex());
             config.save();
         });
-        JLabel title = new JLabel("<html><h1>fc0 Launcher</h1>");
+        JLabel title = new JLabel("<html><h1>"+ Translations.get("launcher.title") + "</h1>");
         title.setHorizontalAlignment(SwingConstants.CENTER);
 
         ModList modList = new ModList(config);
@@ -63,13 +64,13 @@ public final class LauncherGui extends JPanel {
         });
 
         topPanel.add(title, "span, width 100%");
-        topPanel.add(new JLabel("Game version"));
+        topPanel.add(new JLabel(Translations.get("launcher.game-version")));
         topPanel.add(versionComboBox, "wrap");
-        topPanel.add(new JLabel("<html><h2>Mods</h2>"));
+        topPanel.add(new JLabel("<html><h2>" + Translations.get("mods.title") + "</h2>"));
         topPanel.add(addModButton, "gapleft min:push, wrap");
 
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton launchButton = new JButton("Launch");
+        JButton launchButton = new JButton(Translations.get("launcher.launch"));
         launchButton.setFont(launchButton.getFont().deriveFont(14f));
         launchButton.addActionListener(event -> launch());
 
@@ -99,7 +100,7 @@ public final class LauncherGui extends JPanel {
             frame.dispose();
         } catch (Exception e) {
             Logger.error("Could not launch game", e);
-            ErrorPane.show(this, "Could not launch game", null, e);
+            ErrorPane.show(this, Translations.get("error.could-not-launch"), null, e);
         }
     }
 }

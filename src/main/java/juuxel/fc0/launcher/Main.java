@@ -10,6 +10,7 @@ import juuxel.fc0.launcher.config.Config;
 import juuxel.fc0.launcher.gui.Icons;
 import juuxel.fc0.launcher.gui.LauncherGui;
 import juuxel.fc0.launcher.util.Logger;
+import juuxel.fc0.launcher.util.Translations;
 import org.pushingpixels.substance.api.skin.SubstanceNightShadeLookAndFeel;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public final class Main {
                 Logger.error("Could not set look and feel", e);
             }
 
-            JFrame frame = new JFrame("fc0 Launcher");
+            JFrame frame = new JFrame(Translations.get("launcher.title"));
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setSize(640, 480);
             frame.setContentPane(new LauncherGui(frame, Config.load()));

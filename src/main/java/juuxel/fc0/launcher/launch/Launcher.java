@@ -8,6 +8,7 @@ package juuxel.fc0.launcher.launch;
 
 import juuxel.fc0.launcher.gui.ErrorPane;
 import juuxel.fc0.launcher.util.Logger;
+import juuxel.fc0.launcher.util.Translations;
 
 import javax.swing.*;
 import java.lang.reflect.Method;
@@ -53,7 +54,7 @@ public final class Launcher {
                 main.invoke(null, (Object) new String[0]);
             } catch (Exception e) {
                 Logger.error("2fc0f18 crashed!", e);
-                SwingUtilities.invokeLater(() -> ErrorPane.show(null, "2fc0f18 crashed!", null, e));
+                SwingUtilities.invokeLater(() -> ErrorPane.show(null, Translations.get("error.crash"), null, e));
             }
         }, "Game thread").start();
     }
