@@ -27,7 +27,7 @@ import java.util.List;
 public final class Config {
     private static final Path CONFIG_PATH = Path.of(System.getProperty("user.home"), ".config", "fc0-launcher.json");
     public final List<Mod> mods = new ArrayList<>();
-    public Version selectedVersion = Version.LATEST;
+    public Version selectedVersion = Version.VERSIONS.get(0); // The default is the latest version
 
     public static Config load() {
         if (Files.exists(CONFIG_PATH)) {
