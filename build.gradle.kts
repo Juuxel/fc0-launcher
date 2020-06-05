@@ -33,6 +33,7 @@ configure<JavaPluginConvention> {
 
 license {
     header = file("HEADER.txt")
+    include("**/*.java") // Only Java files, no resources
 }
 
 tasks {
