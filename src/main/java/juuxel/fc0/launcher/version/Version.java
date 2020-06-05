@@ -46,9 +46,11 @@ public final class Version {
     public static final Version VERSION_0_1_5 = TEMPLATE.copy().name("0.1.5").build();
     public static final Version VERSION_0_2_0 = TEMPLATE.copy().name("0.2.0").build();
     public static final Version VERSION_0_2_1 = TEMPLATE.copy().name("0.2.1").build();
+    public static final Version VERSION_0_2_2 = TEMPLATE.copy().name("0.2.2").build();
 
     /** All game versions sorted from latest to oldest. */
     public static final ImList<Version> VERSIONS = vec(
+        VERSION_0_2_2,
         VERSION_0_2_1,
         VERSION_0_2_0,
         VERSION_0_1_5,
